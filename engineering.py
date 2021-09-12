@@ -23,7 +23,7 @@ class TextParsing:
         return token_words
 
 
-corona = pd.read_csv("C:/Coding Repository/covid-19/Corona_NLP_train.csv", encoding='ISO-8859-1')
+corona = pd.read_csv("C:/Coding Repository/covid-19-tweets-nlp/Corona_NLP_train.csv", encoding='ISO-8859-1')
 
 english_stopwords = stopwords.words("english")
 wnl = WordNetLemmatizer()
