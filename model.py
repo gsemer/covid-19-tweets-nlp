@@ -6,7 +6,8 @@ from sklearn.svm import SVC
 
 
 # Read csv
-corona = pd.read_csv("C:/Coding Repository/covid-19/app_data/Corona_NLP_train_cleaned.csv", encoding='ISO-8859-1')
+corona = pd.read_csv("C:/Coding Repository/covid-19-tweets-nlp/app_data/Corona_NLP_train_cleaned.csv",
+                     encoding='ISO-8859-1')
 corona = corona.dropna()
 
 # Consider train and target data
