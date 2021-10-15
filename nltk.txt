@@ -1,4 +1,1 @@
 stopwords
-stem
-tokenize
-corpus
