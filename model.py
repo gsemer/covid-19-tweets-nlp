@@ -3,7 +3,25 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
+from engineering import TextParsing
 
+# Read initial csv
+corona = pd.read_csv("C:/Coding Repository/covid-19-tweets-nlp/Corona_NLP_train.csv", encoding='ISO-8859-1')
+
+# Pre-processing
+corona["OriginalTweet"] = corona["OriginalTweet"].apply(lambda x: TextParsing(x).regexp())
+corona["OriginalTweet"] = corona["OriginalTweet"].apply(lambda x: TextParsing(x).tokenization())
+
+corona["Sentiment_integer"] = corona["Sentiment"].map({"Extremely Negative": 0,
+                                                       "Negative": 1,
+                                                       "Neutral": 2,
+                                                       "Positive": 3,
+                                                       "Extremely Positive": 4})
+
+corona.drop(["Location", "UserName", "ScreenName", "TweetAt"], axis=1, inplace=True)
+
+# Create new csv file
+corona.to_csv("app_data/Corona_NLP_train_cleaned.csv", header=True, index=False)
 
 # Read csv
 corona = pd.read_csv("C:/Coding Repository/covid-19-tweets-nlp/app_data/Corona_NLP_train_cleaned.csv",
