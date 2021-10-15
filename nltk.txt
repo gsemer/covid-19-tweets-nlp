@@ -1,1 +1,3 @@
-wordnet
+stem
+tokenize
+corpus
